@@ -17,13 +17,13 @@
       (click)="onCheckoutCardClick()"
       aria-label="Change Checkout"
     >
-      <mat-icon>shopping_cart</mat-icon>
+      <mat-icon  matBadge="{{ checkoutProductAmount }}">shopping_cart</mat-icon>
     </button>
   </mat-toolbar>
 
   <div class="sm:flex sm:flex-col md:flex md:flex-col">
     <div class="flex sm:w-16 md:w-full">
-      <div class="sm:m-10  h-auto max-sm:hidden md:m-20 lg:m-40">
+      <div class="sm:m-10 h-auto max-sm:hidden md:m-20 lg:m-40">
         @for (item of filters; track $index) {
 
         <div class="py-5 lg:w-48">
@@ -96,10 +96,8 @@
               </button>
             </mat-menu>
           </div>
-          <div
-            class="sm:flex sm:flex-col md:flex md:flex-col "
-          >
-            <div class="flex sm:w-16 md:w-full max-sm:flex-col ">
+          <div class="sm:flex sm:flex-col md:flex md:flex-col">
+            <div class="flex sm:w-16 md:w-full max-sm:flex-col">
               <div class="sm:m-10 h-auto md:m-20 min-[650px]:hidden">
                 @for (item of filters; track $index) {
 
@@ -120,10 +118,8 @@
                 </div>
                 }
               </div>
-              <app-product-card></app-product-card>
+              <app-product-card (counterChange)="handleCounterChange($event)"></app-product-card>
             </div>
-            
-            
           </div>
         </div>
       </div>

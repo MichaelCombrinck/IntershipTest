@@ -53,7 +53,7 @@ export class ProductListPageComponent {
 
   links:string[] = ['Sorting Products']
 
-  checkoutProductAmount: number = 0;
+  checkoutProductAmount: number = this._productService.checkoutProductsAmount.value;
 
   browserRefresh: boolean = false;
 
@@ -101,9 +101,11 @@ export class ProductListPageComponent {
       ],
     },
   ];
+
+
   @ViewChild('drawer', { static: true }) drawer!: MatDrawer;
 
-  constructor(private _route: Router, private _productService: ProductService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(private _route: Router, private _productService: ProductService) {
     this._productService.getAllProducts();
   }
 
@@ -158,5 +160,9 @@ export class ProductListPageComponent {
     this._productService.ProductList.next(products);
   }
 
+  handleCounterChange(counter: number) {
+    this.checkoutProductAmount = counter;
+    this._productService.checkoutProductsAmount.next(counter);
+  }
 
 }

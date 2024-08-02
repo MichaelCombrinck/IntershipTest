@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Product } from '../../core/models/product';
@@ -22,6 +22,12 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductCardComponent implements OnInit {
   public products: Product[] = [];
+
+public productCounter: number = 0;
+
+@Output() counterChange = new EventEmitter<number>();
+
+
   public initProducts: Product[] = [
     {
       id: 1,
@@ -153,9 +159,14 @@ export class ProductCardComponent implements OnInit {
 
   onAddToCardClick(product: Product) {
     this._productService.addCheckoutProducts(product);
+
+    this.productCounter++;
+    const value = this._productService.checkoutProductsAmount.value
+    this.counterChange.emit(value);
     this._snackBar.open('Product added to Cart', 'Close', {
       duration: 5000,
     });
+    
   }
 
   // look at this

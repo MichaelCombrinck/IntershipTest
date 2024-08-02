@@ -13,6 +13,8 @@ export class ProductService {
   public checkoutList: Product[] = [];
   public wishlistProducts: Product[] = [];
 
+  public checkoutProductsAmount = new BehaviorSubject<number>(0);
+
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
   // System Products
@@ -99,6 +101,7 @@ export class ProductService {
     if (existingProduct) {
       existingProduct.quantity += 1;
     } else {
+      this.checkoutProductsAmount.next(this.checkoutProductsAmount.value + 1)
       checkoutList.push({ ...product, quantity: 1 });
     }
     this.walletList.next([...checkoutList]);

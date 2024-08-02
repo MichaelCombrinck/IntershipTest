@@ -106,6 +106,8 @@ export class ChangeCalculationPageComponent implements OnInit {
 
   removeFromCheckout(product: Product) {
     this._productService.removeCheckoutProduct(product);
+    const productInWalletAmount = this._productService.checkoutProductsAmount.value;
+    this._productService.checkoutProductsAmount.next(productInWalletAmount - 1);
     this.dataSource = this.dataSource.filter((p) => p !== product);
     this.calculateTotal();
   }
