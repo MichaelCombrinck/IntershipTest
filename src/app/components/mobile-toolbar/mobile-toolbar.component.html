@@ -1,0 +1,22 @@
+<mat-toolbar class="navigation">
+  <button mat-icon-button (click)="onMenuClick()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="shop-name">Michael's Shop</span>
+  <button mat-icon-button aria-label="Wishlist" (click)="onWishlistLinkClick()">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    (click)="onCheckoutCardClick()"
+    aria-label="Change Checkout"
+  >
+    <mat-icon matBadge="{{ checkoutProductAmount }}">shopping_cart</mat-icon>
+  </button>
+</mat-toolbar>
+
+@if(openMenu) {
+    <div class="w-full h-full">
+        
+    </div>
+}

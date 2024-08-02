@@ -1,0 +1,45 @@
+.toolbar-color {
+  background-color: black;
+}
+
+.layout {
+  display: flex;
+}
+
+.navigation {
+  background-color: #9cdba6;
+  color: white;
+}
+
+.nav-items {
+  padding: 20px;
+  font-size: 20px;
+}
+
+.nav-items:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.filtering-heading {
+  font-weight: bolder;
+}
+
+.shop-name {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.filtering-checkbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-mobile-button {
+  @media (min-width: 440px) {
+    display: none;
+  }
+}
+
+.active-drawer {
+  height: 40px;
+}

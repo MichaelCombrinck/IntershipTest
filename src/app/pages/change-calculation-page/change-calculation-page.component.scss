@@ -1,0 +1,82 @@
+.toolbar-color {
+    background-color: black;
+}
+
+.layout {
+    display: flex;
+}
+
+.navigation {
+    background-color: #9CDBA6;
+    color: white;
+}
+
+.nav-items {
+    padding: 20px;
+    font-size: 20px;
+}
+
+.nav-items:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.checkout-container {
+    padding: 50px;
+    width: 44%;
+}
+
+
+.price-cell-container {
+    width: 130px;
+}
+
+.checkout-scroll-container {
+    height: 520px;
+    overflow-y: auto;
+}
+
+.empty-wallet-message {
+    color: #757575;
+    text-align: center;
+    font-style: italic;
+}
+
+.change-scroll-container {
+    height: 500px;
+    overflow-y: auto;
+}
+
+.quantity-input-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .quantity-button {
+    color: #3f51b5;
+  }
+  
+  .quantity-input-field {
+    width: 60px;
+    padding-top: 15%;
+  }
+  
+  .quantity-input {
+    text-align: center;
+    width: 40px;
+  }
+
+  .quantity-header {
+    text-align: center;
+  }
+
+
+.payment-container {
+    padding: 50px;
+    width: 30%;
+}
+
+th,td {
+    text-align: center;
+}

@@ -1,0 +1,132 @@
+<div class="w-full">
+  <mat-toolbar class="navigation">
+    <span class="shop-name w-full flex justify-center">
+      Michael's Selling Shop
+    </span>
+    <div>
+      <button
+        mat-icon-button
+        aria-label="Wishlist"
+        (click)="onWishlistLinkClick()"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+    <button
+      mat-icon-button
+      (click)="onCheckoutCardClick()"
+      aria-label="Change Checkout"
+    >
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="sm:flex sm:flex-col md:flex md:flex-col">
+    <div class="flex sm:w-16 md:w-full">
+      <div class="sm:m-10  h-auto max-sm:hidden md:m-20 lg:m-40">
+        @for (item of filters; track $index) {
+
+        <div class="py-5 lg:w-48">
+          <span class="filtering-headings font-bold text-primary-dark">{{
+            item.filterName
+          }}</span>
+          <mat-divider class="!my-5"></mat-divider>
+          <section class="filtering-checkbox">
+            @for (item2 of item.items; track $index) {
+            <mat-checkbox (change)="onCheckCategory($event, item2.value)">{{
+              item2.displayValue
+            }}</mat-checkbox>
+            }
+          </section>
+        </div>
+        }
+      </div>
+
+      <!-- Products Section -->
+      <div class="product-section w-full sm:flex sm:flex-col">
+        <div class="flex flex-col justify-end p-16 max-sm:pr-20 max-sm:pb-0">
+          <div class="h-20 w-full flex justify-end">
+            <mat-form-field appearance="fill">
+              <mat-label>Search Products</mat-label>
+              <input matInput placeholder="Search" (input)="onSearch($event)" />
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <div class="flex justify-end mb-5 max-sm:justify-center">
+            <button mat-flat-button [matMenuTriggerFor]="menu">
+              Sort Products
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="name">
+                Sorting by Name
+              </button>
+              <button mat-menu-item [matMenuTriggerFor]="price">
+                Sort by Price
+              </button>
+              <button mat-menu-item [matMenuTriggerFor]="rating">
+                Sort by Rating
+              </button>
+            </mat-menu>
+
+            <mat-menu #name="matMenu">
+              <button mat-menu-item (click)="onSortClick('name', 'asc')">
+                Name: A - Z
+              </button>
+              <button mat-menu-item (click)="onSortClick('name', 'desc')">
+                Name: Z - A
+              </button>
+            </mat-menu>
+
+            <mat-menu #rating="matMenu">
+              <button mat-menu-item (click)="onSortClick('rating', 'asc')">
+                Highest Rated
+              </button>
+              <button mat-menu-item (click)="onSortClick('rating', 'desc')">
+                Lowest Rated
+              </button>
+            </mat-menu>
+
+            <mat-menu #price="matMenu">
+              <button mat-menu-item (click)="onSortClick('price', 'asc')">
+                Price: Low - High
+              </button>
+              <button mat-menu-item (click)="onSortClick('price', 'desc')">
+                Price: High - Low
+              </button>
+            </mat-menu>
+          </div>
+          <div
+            class="sm:flex sm:flex-col md:flex md:flex-col "
+          >
+            <div class="flex sm:w-16 md:w-full max-sm:flex-col ">
+              <div class="sm:m-10 h-auto md:m-20 min-[650px]:hidden">
+                @for (item of filters; track $index) {
+
+                <div class="py-5 lg:w-48">
+                  <span
+                    class="filtering-headings font-bold text-primary-dark"
+                    >{{ item.filterName }}</span
+                  >
+                  <mat-divider class="!my-5"></mat-divider>
+                  <section class="filtering-checkbox">
+                    @for (item2 of item.items; track $index) {
+                    <mat-checkbox
+                      (change)="onCheckCategory($event, item2.value)"
+                      >{{ item2.displayValue }}</mat-checkbox
+                    >
+                    }
+                  </section>
+                </div>
+                }
+              </div>
+              <app-product-card></app-product-card>
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

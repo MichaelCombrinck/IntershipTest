@@ -1,0 +1,62 @@
+.product-card {
+  @media (max-width: 800px) {
+    max-width: 200px;
+    max-height: 460px;
+  }
+
+  @media (min-width: 800px) {
+    max-width: 250px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.layout {
+  @media (min-width: 440px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+  justify-content: center;
+}
+
+.mobile-layout {
+  @media (max-width: 440px) {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+}
+
+.product-font {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.action-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.card-image {
+  height: 250px;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* Add cursor pointer to indicate the stars are clickable */
+}
+
+.star-icon {
+  color: gold;
+}
+
+.star-icon.outline {
+  color: lightgray;
+}
+

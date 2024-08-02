@@ -1,0 +1,163 @@
+<!-- Navigation -->
+
+<div class="navbar">
+  <mat-toolbar class="navigation">
+    <span class="shop-name w-full flex justify-center"
+      >Michael's Selling Shop</span
+    >
+    <div>
+      <button mat-icon-button aria-label="Checkout" (click)="onHomeLinkClick()">
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<!-- Change Calculation  -->
+
+<div class="w-full">
+  <div class="flex">
+    <!-- This empty div is to make sure that the flex-box is split into 3. -->
+    <div class="payment-container flex">
+
+    </div >
+    <div class="checkout-container">
+      <div class="flex flex-col gap-10 align-center w-full h-80">
+        <span class="text-4xl font-bold text-primary-dark">My Wallet</span>
+        <mat-divider class="pt-5"></mat-divider>
+        <div class="change-calculation">
+          @if (dataSource.length === 0) {
+          <div>
+            <h4 class="empty-wallet-message">
+              Wallet Is Empty, No Products Were Added To Wallet
+            </h4>
+          </div>
+          }@else {
+          <div class="change-scroll-container">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+              <!-- Image Url -->
+              <ng-container matColumnDef="imageUrl">
+                <th mat-header-cell *matHeaderCellDef>Image Url</th>
+                <td mat-cell *matCellDef="let element">
+                  <img
+                    class=" image-cell"
+                    src="{{ element.imageUrl }}"
+                  />
+                </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+              </ng-container>
+
+              <!-- Type Column -->
+              <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef>Type</th>
+                <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+              </ng-container>
+
+              <!-- Category Column -->
+              <ng-container matColumnDef="category">
+                <th mat-header-cell *matHeaderCellDef>Category</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.category }}
+                </td>
+              </ng-container>
+
+              <!-- Quantity Column -->
+              <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef class="quantitiy-header">Quantity</th>
+                <td mat-cell *matCellDef="let element" class="quantity-cell-container">
+                  <div class="quantity-input-container">
+                    <button mat-icon-button (click)="decreaseQuantity(element)" class="quantity-button">
+                      <mat-icon>remove_circle_outline</mat-icon>
+                    </button>
+                    <mat-form-field appearance="outline" class="quantity-input-field">
+                      <input
+                        matInput
+                        type="number"
+                        [(ngModel)]="element.quantity"
+                        class="quantity-input"
+                        readonly
+                      />
+                    </mat-form-field>
+                    <button mat-icon-button (click)="increaseQuantity(element)" class="quantity-button">
+                      <mat-icon>add_circle_outline</mat-icon>
+                    </button>
+                  </div>
+                </td>
+              </ng-container>
+
+              <!-- Price Column -->
+              <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef>Price</th>
+                <td
+                  mat-cell
+                  *matCellDef="let element"
+                  class="price-cell-container"
+                >
+                  R {{ element.price }}
+                </td>
+              </ng-container>
+
+              <!-- Total Cost Per Product Column -->
+              <ng-container matColumnDef="totalCost">
+                <th mat-header-cell *matHeaderCellDef>
+                  Total Cost Per Product
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  R {{ element.quantity * element.price }}
+                </td>
+              </ng-container>
+
+              <!-- Remove Item Column -->
+            <ng-container matColumnDef="remove">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="removeFromCheckout(element)" matToolTip="Remove Item From Tooltip">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+          </div>
+          <div class="flex justify-end p-5">
+            @if (totalOfCard){
+            <h4>Total: R {{ totalOfCard }}</h4>
+            }
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    @if (dataSource.length > 0) {
+      <div class="payment-container flex w-64">
+        <div class="payment-section justify-end">
+          <div class="flex flex-col p-5">
+            <span class="text-4xl text-primary-dark font-bold py-4">Payment Counter: </span>
+            <mat-form-field appearance="fill">
+              <mat-label>Amount Paid</mat-label>
+              <input matInput type="number" step="0.01" [(ngModel)]="amountPaid" />
+            </mat-form-field>
+            <button mat-flat-button color="primary" (click)="calculateChange()">
+              Calculate Change
+            </button>
+          </div>
+          @if (changeMessage) {
+            <div class="change-result w-64">
+              <h5 style="white-space: break-spaces; padding-left: 12px;">{{ changeMessage }}</h5>
+            </div>
+            }
+          </div>
+        </div>
+       
+    }
+    
+  </div>
+</div>

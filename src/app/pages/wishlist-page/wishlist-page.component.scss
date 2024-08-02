@@ -1,0 +1,50 @@
+.toolbar-color {
+    background-color: black;
+}
+
+.layout {
+    display: flex;
+}
+
+.navigation {
+    background-color: #9CDBA6;
+    color: white;
+}
+
+.nav-items {
+    padding: 20px;
+    font-size: 20px;
+}
+
+.nav-items:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.wishlist-container {
+    padding: 100px;
+    width: 900px;
+}
+
+.image-cell {
+    padding: 15px 0;
+}
+
+.price-cell-container {
+    width: 130px;
+}
+
+.wishlist-scroll-container {
+    height: 520px;
+    overflow-y: auto;
+}
+
+.empty-wishlist-message {
+    color: #757575;
+    text-align: center;
+    font-style: italic;
+}
+
+.image-cell {
+    width: 80px;
+}

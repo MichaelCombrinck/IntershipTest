@@ -1,0 +1,163 @@
+<mat-toolbar class="topnav">
+  <div>
+    @for(item of topNavLinkIsActive; track $index) {
+    <a
+      [ngClass]="item.IsActive ? 'active' : ''"
+      href="#{{ item.Name.toLowerCase() }}"
+      (click)="onNavClick($index)"
+      >{{ item.Name }}</a
+    >
+
+    }
+  </div>
+</mat-toolbar>
+
+<div class="topnav"></div>
+<div id="home" class="introduction">
+  <div class="left-section">
+    
+      <h1 class="flex flex-col text-nowrap pl-4">
+        Welcome, I am Michael,
+      </h1>
+      <span class="personal-title flex justify-center text-center w-full text-5xl">
+        a Software Developer</span
+      >
+  
+  </div>
+
+  <div class="right-section">
+    <img
+      src="../../assets/images/home-right-section.jpg"
+      alt="computer-image"
+    />
+  </div>
+</div>
+<div class="top-section">
+  <hr class="circle-hr" />
+  <div class="aboutMe-section" id="about me">
+    <div class="about-me-heading">
+      <h2>About Me:</h2>
+    </div>
+    <div class="about-list-container">
+      <div class="containers">
+        <i class="fa fa-cutlery icons" aria-hidden="true"></i>
+        <div class="about-subheading">
+          <h3>Cooking</h3>
+        </div>
+        <p>
+          Recently still new to cooking but so far I am enjoying the learning
+          process and the results when cooking
+        </p>
+      </div>
+
+      <div class="containers">
+        <i class="fa fa-music icons" aria-hidden="true"></i>
+        <div class="about-subheading">
+          <h3>Music</h3>
+        </div>
+        <p>
+          I enjoy playing music, I would enjoy composing music such as Praise
+          and Worship music. I play the electric Guitar and the Keyboard.
+        </p>
+      </div>
+
+      <div class="containers">
+        <i class="fa fa-code icons" aria-hidden="true"></i>
+        <div class="about-subheading">
+          <h3>Programming</h3>
+        </div>
+        <p>
+          I working as a software developer and specialize in the front end, I
+          have experience in the back end and with the database. Also have
+          knowledge with frameworks such as Angular and React.
+        </p>
+      </div>
+    </div>
+  </div>
+  <hr class="circle-hr" />
+
+  <div class="languages">
+    <h2>Languages:</h2>
+    <ul>
+      <li>Afrikaans</li>
+      <li>English</li>
+      <li>Spanish</li>
+    </ul>
+  </div>
+  <div class="skills-container" id="skills">
+    <h2>Skills:</h2>
+    <ul>
+      @for(skill of skills; track skill) {
+      <li>
+        <mat-icon class="mr-2 text-green-500">code</mat-icon> {{skill.name }} <span class="skill-level">{{ skill.level }}</span>
+      </li>
+      }
+    </ul>
+  </div>
+</div>
+
+<hr class="circle-hr" />
+
+<div class="qualifications" id="qualifications">
+  <div class="qualifications-heading">
+    <h2>Qualifications:</h2>
+  </div>
+  <!--- This is comment for my CV-->
+  <ul>
+    <li><i class="fas fa-graduation-cap"></i>NQF 5</li>
+    <li><i class="fas fa-graduation-cap"></i>Azure Associate Developer</li>
+    <li>
+      <i class="fas fa-graduation-cap"></i>Microsoft Associate Certification
+      Introduction to Python
+    </li>
+    <li>
+      <i class="fas fa-graduation-cap"></i>Microsoft Associate Certification
+      Introduction to Html and CSS
+    </li>
+    <li>
+      <i class="fas fa-graduation-cap"></i>Microsoft Associate Certification
+      Introduction to JavaScript
+    </li>
+  </ul>
+</div>
+
+<hr class="circle-hr" />
+
+<div class="experience-container">
+  <h2>Working Experience:</h2>
+  <h3>2023-current</h3>
+  <p>
+    Bitcube - Worked developing web applications using Angular and C# Asp.net
+    core, worked with both the front end and the back end, also worked with the
+    database, using microsoft sql server
+  </p>
+ 
+</div>
+<hr class="circle-hr" />
+<div class="education-section">
+  <div class="education-heading">
+    <h2>Education:</h2>
+  </div>
+
+  <h3>Highschool Adamanctia: 2016 - 2020</h3>
+  <p>
+    Completed my high school education with a strong focus on science and
+    mathematics. Actively participated in various extracurricular activities and
+    projects that honed my analytical and problem-solving skills.
+  </p>
+  <h3>CTU: 2021 - 2022</h3>
+  <p>
+    Pursued higher education with a specialization in software development.
+    Gained extensive knowledge and practical experience in various programming
+    languages and frameworks, preparing me for a professional career in the tech
+    industry.
+  </p>
+
+  <div class="flex w-full">
+    <app-home-transaction-section></app-home-transaction-section>
+  </div>
+
+  <div>
+    <app-contact-info></app-contact-info>
+  </div>
+</div>
