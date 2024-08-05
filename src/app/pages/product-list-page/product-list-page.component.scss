@@ -43,3 +43,11 @@
 .active-drawer {
   height: 40px;
 }
+
+.tablet-layout {
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    
+
+  }
+}

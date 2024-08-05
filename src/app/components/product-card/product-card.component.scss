@@ -12,7 +12,19 @@
 }
 
 .layout {
-  @media (min-width: 440px) {
+  @media (min-width: 300px) {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  @media (min-width: 1800px) {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
@@ -60,3 +72,8 @@
   color: lightgray;
 }
 
+.mobile-card-layout {
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+}

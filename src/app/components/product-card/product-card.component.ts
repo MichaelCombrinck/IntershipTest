@@ -23,10 +23,9 @@ import { CommonModule } from '@angular/common';
 export class ProductCardComponent implements OnInit {
   public products: Product[] = [];
 
-public productCounter: number = 0;
+  public productCounter: number = 0;
 
-@Output() counterChange = new EventEmitter<number>();
-
+  @Output() counterChange = new EventEmitter<number>();
 
   public initProducts: Product[] = [
     {
@@ -120,16 +119,12 @@ public productCounter: number = 0;
 
   public productList: Product[] = [];
 
-  public desktop: boolean = true;
-
   public productIsWishlist: Product[] = [];
 
   constructor(
     private _snackBar: MatSnackBar,
-    private _productService: ProductService,
-  ) {
-    
-  }
+    private _productService: ProductService
+  ) {}
 
   ngOnInit(): void {
     this._productService.ProductList.subscribe((value) => {
@@ -161,12 +156,11 @@ public productCounter: number = 0;
     this._productService.addCheckoutProducts(product);
 
     this.productCounter++;
-    const value = this._productService.checkoutProductsAmount.value
+    const value = this._productService.checkoutProductsAmount.value;
     this.counterChange.emit(value);
     this._snackBar.open('Product added to Cart', 'Close', {
       duration: 5000,
     });
-    
   }
 
   // look at this
