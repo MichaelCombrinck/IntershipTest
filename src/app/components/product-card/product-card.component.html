@@ -1,71 +1,66 @@
 @if(products.length > 0) {
 <div class="layout sm:flex sm:flex-col sm:mb-4">
- 
-    @for (product of products; track $index) {
-      <div class="mobile-layout">
-        <mat-card class="product-card product-font lg:mr-10" appearance="outlined">
-          <img
-            mat-card-image
-            class="card-image"
-            src="{{ product.imageUrl }}"
-            alt="Photo of a {{ product.name }}"
-          />
-          <mat-card-content>
-            <div class="pt-5 pb-2">
-              <span class="font-bold text-xl ">{{ product.name }}</span>
-            </div>
-              <p class="text-gray-500 max-sm:hidden mobile-card-layout">{{ product.description }}</p>
-            
-            
-      
-      
-            <div class="rating-container">
-              @for (star of getStarArray(product.rating); track $index) {
-              <ng-container>
-                <mat-icon
-                  class="star-icon"
-                  (click)="setRating(product, $index + 1)"
-                  [ngClass]="{ filled: star, outline: !star }"
-                  >{{ star ? "star" : "star_border" }}</mat-icon
-                >
-              </ng-container>
-              }
-            </div>
-      
-            <div>
-              <span class="text-lg product-font">R {{ product.price }}</span>
-            </div>
-          </mat-card-content>
-          <mat-card-actions class="flex flex-col justify-end h-full">
-            <div class="action-button-container">
-              <button mat-icon-button (click)="onAddToCardClick(product)">
-                <mat-icon>add_shopping_cart</mat-icon>
-              </button>
-              @if(!product.wishlist) {
-              <button mat-icon-button (click)="onWishlistToggleClick($index)">
-                <mat-icon>favorite_border</mat-icon>
-              </button>
-      
-              }@if (product.wishlist) {
-              <button mat-icon-button>
-                <mat-icon (click)="onWishlistToggleClick($index)">favorite</mat-icon>
-              </button>
-              }
-            </div>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-  
-    }
-  
+  @for (product of products; track $index) {
+  <div class="mobile-layout">
+    <mat-card class="product-card product-font lg:mr-10" appearance="outlined">
+      <img
+        mat-card-image
+        class="card-image"
+        src="{{ product.imageUrl }}"
+        alt="Photo of a {{ product.name }}"
+      />
+      <mat-card-content>
+        <div class="pt-5 pb-2">
+          <span class="font-bold text-xl">{{ product.name }}</span>
+        </div>
+        <p class="text-gray-500 max-sm:hidden mobile-card-layout">
+          {{ product.description }}
+        </p>
 
+        <div class="rating-container">
+          @for (star of getStarArray(product.rating); track $index) {
+          <ng-container>
+            <mat-icon
+              class="star-icon"
+              (click)="setRating(product, $index + 1)"
+              [ngClass]="{ filled: star, outline: !star }"
+              >{{ star ? "star" : "star_border" }}</mat-icon
+            >
+          </ng-container>
+          }
+        </div>
 
- 
-</div>
-}
-@else {
-  <div class="flex justify-center w-full align-center">
-    <h2>No Products is available </h2>
+        <div>
+          <span class="text-lg product-font">R {{ product.price }}</span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="flex flex-col justify-end h-full">
+        <div class="action-button-container">
+          <button mat-icon-button (click)="onAddToCardClick(product)">
+            <mat-icon>add_shopping_cart</mat-icon>
+          </button>
+          @if(!product.wishlist) {
+          <button mat-icon-button (click)="onWishlistToggleClick($index)">
+            <mat-icon>favorite_border</mat-icon>
+          </button>
+
+          }@if (product.wishlist) {
+          <button mat-icon-button>
+            <mat-icon (click)="onWishlistToggleClick($index)"
+              >favorite</mat-icon
+            >
+          </button>
+          }
+        </div>
+      </mat-card-actions>
+    </mat-card>
   </div>
-  
+
+  }
+</div>
+} @else {
+<div class="flex justify-center w-full align-center">
+  <h2>No Products is available</h2>
+</div>
+
 }

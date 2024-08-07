@@ -48,3 +48,9 @@
 .image-cell {
     width: 80px;
 }
+
+.mobile-table {
+    @media screen and (max-width: 410px) {
+        display: none;
+    }
+}

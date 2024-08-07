@@ -1,39 +1,37 @@
-<div class="navbar">
-  <mat-toolbar class="navigation">
-    <span class="shop-name w-full flex justify-center"
-      >Michael's Selling Shop</span
-    >
-    <div>
-      <button
-        mat-icon-button
-        aria-label="home-page"
-        (click)="onHouseLinkClick()"
+<div class="w-full max-md:overflow-x-hidden">
+  <div class="navbar">
+    <mat-toolbar class="navigation">
+      <span class="shop-name w-full flex justify-center"
+        >Michael's Selling Shop</span
       >
-        <mat-icon>home</mat-icon>
-      </button>
-    </div>
-  </mat-toolbar>
-</div>
+      <div>
+        <button
+          mat-icon-button
+          aria-label="home-page"
+          (click)="onHouseLinkClick()"
+        >
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+  </div>
 
-<!-- container section -->
+  <!-- container section -->
 
-<div class="flex justify-center align-center w-full h-80">
-  <div class="wishlist-container flex flex-col gap-10">
-    <span class="text-4xl font-bold text-primary-dark">My Wishlist</span>
-    <mat-divider class="pt-5"></mat-divider>
+  <div class="flex justify-center align-center w-full h-80">
+    <div class="wishlist-container flex flex-col gap-10 max-[700px]:w-full">
+      <span class="text-4xl font-bold text-primary-dark max-sm:flex max-sm:justify-center">My Wishlist</span>
+      <mat-divider class="pt-5"></mat-divider>
 
-    <div class="product-wishlist-container">
-      @if (dataSource.length === 0) {
+      <div class="product-wishlist-container">
+        @if (dataSource.length === 0) {
         <div>
-          <h4 class="empty-wishlist-message">
+          <h4 class="empty-wishlist-message max-sm:flex max-sm:justify-center">
             Wallet Is Empty, No Products Were Added To Wallet
           </h4>
         </div>
-      }@else {
-        <div class="wishlist-scroll-container">
-
-
-
+        }@else {
+        <div class="wishlist-scroll-container max-sm:w-80">
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <!-- Image Url -->
             <ng-container matColumnDef="imageUrl">
@@ -45,60 +43,71 @@
                 />
               </td>
             </ng-container>
-  
+
             <!-- Name Column -->
-            <ng-container matColumnDef="name">
+            <ng-container matColumnDef="name" >
               <th mat-header-cell *matHeaderCellDef>Name</th>
               <td mat-cell *matCellDef="let element">{{ element.name }}</td>
             </ng-container>
-  
+
             <!-- Type Column -->
-            <ng-container matColumnDef="type">
+            <ng-container matColumnDef="type" class="mobile-table">
               <th mat-header-cell *matHeaderCellDef>Type</th>
               <td mat-cell *matCellDef="let element">{{ element.type }}</td>
             </ng-container>
-  
+
             <!-- Category Column -->
-            <ng-container matColumnDef="category">
+            <ng-container matColumnDef="category" class="mobile-table">
               <th mat-header-cell *matHeaderCellDef>Category</th>
               <td mat-cell *matCellDef="let element">{{ element.category }}</td>
             </ng-container>
-  
+
             <!-- Price Column -->
             <ng-container matColumnDef="price">
               <th mat-header-cell *matHeaderCellDef>Price</th>
-              <td mat-cell *matCellDef="let element" class="price-cell-container">
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="price-cell-container"
+              >
                 R {{ element.price }}
               </td>
             </ng-container>
 
             <!-- Remove Item Column -->
             <ng-container matColumnDef="remove">
-              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <th mat-header-cell *matHeaderCellDef>Action</th>
               <td mat-cell *matCellDef="let element">
-                <button mat-icon-button (click)="removeFromWishlist(element)" matToolTip="Remove Item From Tooltip">
+                <button
+                  mat-icon-button
+                  (click)="removeFromWishlist(element)"
+                  matToolTip="Remove Item From Tooltip"
+                >
                   <mat-icon>delete</mat-icon>
                 </button>
               </td>
             </ng-container>
 
-             <!-- Add to Checkout Button Column -->
-          <ng-container matColumnDef="addToCheckout">
-            <th mat-header-cell *matHeaderCellDef> Add to Checkout </th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-icon-button (click)="addToCheckout(element)" matTooltip="Add To Shopping Cart">
-                <mat-icon>add_shopping_cart</mat-icon>
-              </button>
-            </td>
-          </ng-container>
-  
+            <!-- Add to Checkout Button Column -->
+            <ng-container matColumnDef="addToCheckout">
+              <th mat-header-cell *matHeaderCellDef>Add to Checkout</th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  mat-icon-button
+                  (click)="addToCheckout(element)"
+                  matTooltip="Add To Shopping Cart"
+                >
+                  <mat-icon>add_shopping_cart</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
           </table>
         </div>
-      }
-      
-     
+        }
+      </div>
     </div>
   </div>
 </div>

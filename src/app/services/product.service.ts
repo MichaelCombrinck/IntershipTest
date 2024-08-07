@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Product } from '../core/models/product';
 import { BehaviorSubject } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -15,7 +14,7 @@ export class ProductService {
 
   public checkoutProductsAmount = new BehaviorSubject<number>(0);
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor() {}
 
   // System Products
 
